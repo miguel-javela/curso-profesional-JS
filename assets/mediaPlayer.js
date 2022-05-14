@@ -1,11 +1,22 @@
 function MediaPlayer(config) {
-    this.media = config.el;//no entiendo esta linea de codigo
+    this.media = config.el;
     this.plugins = config.plugins || [] //se le da un valor inicial
 
     this._initPlugins();
 }
 
 MediaPlayer.prototype._initPlugins = function (){
+  const player = {
+    play: () => this.play(),
+    pause: () => this.pause(),
+    media: this.media,
+    get muted (){
+      return this.media.muted;
+    },
+    set muted(value){
+        this.media.muted = value
+    }
+  }
   this.plugins.forEach(plugin =>{
     plugin.run(this);
   });

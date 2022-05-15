@@ -5,6 +5,7 @@ class AutoPause {
         //no tiene la funcion play o pause,pues dentro de la funcion handlerIntersection el this hace referencia a IntersectionObserver,
         //por eso se define el this permanentemente a la instancia del objeto por medio de bind
         this.handlerIntersection = this.handlerIntersection.bind(this);//no entiendo esta linea
+        this.handleVisibilityChange = this.handleVisibilityChange.bind(this);//no entiendo esta linea
 
     }
     run(player){
@@ -13,6 +14,8 @@ class AutoPause {
             threshold: this.threshold
         })
         observer.observe(this.player.media)
+
+        document.addEventListener("visibilitychange", this.handleVisibilityChange)
     }
 
     handlerIntersection(entries){
@@ -23,7 +26,15 @@ class AutoPause {
         }else{
             this.player.pause();
         }
-        
+    }
+
+    handleVisibilityChange(){
+        const isVisible = document.visibilityState === "visible";
+        if(isVisible){
+            this.player.play();
+        }else{
+            this.player.pause();
+        }
     }
 }
 

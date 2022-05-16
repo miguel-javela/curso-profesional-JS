@@ -12,3 +12,9 @@ buttonPlay.onclick = () => player.togglePlay();
 
 const buttonSound = document.getElementById('sound');
 buttonSound.onclick = () => player.toggleSound();
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').catch(error => {
+    console.log(error.message);
+  });
+}

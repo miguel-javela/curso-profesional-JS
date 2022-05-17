@@ -33,7 +33,7 @@
           }
 
           const suggestion = Object.keys(obj).find(key => {
-            return Levenshtein.get(key, prop) <= 3;
+            return Levenshtein.get(key, prop) <= 2;
           });
 
           if (suggestion) {

@@ -6,6 +6,24 @@ function add(a:number, b:number){
 
 const sum = add(2,3)
 
+function createAdder(a:number): (number) => number{
+    return function (b:number){
+        return b + a;
+    };
+}
+
+const addFour = createAdder(4)
+console.log("addFour",addFour)
+const fourPlus6 = addFour(6)
+console.log("fourPlus6",fourPlus6)
+
+//function fullName(firstName:string, lastName?:string){//lastname no es obligatorio
+function fullName(firstName:string, lastName:string = "smith"){//valor por omision
+    return `${firstName} ${lastName}`;
+}
+
+const richar = fullName("miguel")
+
 //boolean
 let muted:boolean = true;
 

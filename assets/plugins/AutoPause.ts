@@ -1,4 +1,9 @@
+import MediaPlayer from "../mediaPlayer";
+
 class AutoPause {
+    private threshold:number;
+    player: MediaPlayer;
+
     constructor(){
         this.threshold = 0.25;
         //este error sucede porque inicialmente el IntersectionObserver es quien llama la funcion handlerIntersection, por lo tanto
@@ -18,7 +23,7 @@ class AutoPause {
         document.addEventListener("visibilitychange", this.handleVisibilityChange)
     }
 
-    handlerIntersection(entries){
+    private handlerIntersection(entries: IntersectionObserverEntry[]){
         const entry = entries[0];
         const isVisible = entry.intersectionRatio >= this.threshold;
         if(isVisible){
@@ -28,7 +33,7 @@ class AutoPause {
         }
     }
 
-    handleVisibilityChange(){
+    private handleVisibilityChange(){
         const isVisible = document.visibilityState === "visible";
         if(isVisible){
             this.player.play();

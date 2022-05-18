@@ -1,57 +1,53 @@
-function MediaPlayer(config) {
+class MediaPlayer {
+  constructor(config) {
     this.media = config.el;
-    this.plugins = config.plugins || [] //se le da un valor inicial
+    this.plugins = config.plugins || []; //se le da un valor inicial
 
     this._initPlugins();
-}
-
-MediaPlayer.prototype._initPlugins = function (){
-  const player = {
-    play: () => this.play(),
-    pause: () => this.pause(),
-    media: this.media,
-    get muted (){
-      return this.media.muted;
-    },
-    set muted(value){
-        this.media.muted = value
-    }
   }
-  this.plugins.forEach(plugin =>{
-    plugin.run(player);
-  });
-};
-
-MediaPlayer.prototype.play = function() {
+  _initPlugins() {
+    const player = {
+      play: () => this.play(),
+      pause: () => this.pause(),
+      media: this.media,
+      get muted() {
+        return this.media.muted;
+      },
+      set muted(value) {
+        this.media.muted = value;
+      }
+    };
+    this.plugins.forEach(plugin => {
+      plugin.run(player);
+    });
+  }
+  play() {
     this.media.play();
-};
-
-MediaPlayer.prototype.pause = function() {
+  }
+  pause() {
     this.media.pause();
-};
-
-MediaPlayer.prototype.togglePlay = function() {
+  }
+  togglePlay() {
     if (this.media.paused) {
       this.play();
     } else {
       this.pause();
     }
-};
-
-MediaPlayer.prototype.mute = function (){
-  this.media.muted = true;
-}
-
-MediaPlayer.prototype.unmute = function (){
-  this.media.muted = false;
-}
-
-MediaPlayer.prototype.toggleSound = function() {
-  if (this.media.muted) {
-    this.unmute();
-  } else {
-    this.mute();
   }
-};
+  mute() {
+    this.media.muted = true;
+  }
+  unmute() {
+    this.media.muted = false;
+  }
+  toggleSound() {
+    if (this.media.muted) {
+      this.unmute();
+    } else {
+      this.mute();
+    }
+  }
+}
+
 
 export default MediaPlayer

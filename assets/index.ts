@@ -1,16 +1,16 @@
-import MediaPlayer from './mediaPlayer.js'
-import AutoPlay from './plugins/AutoPlay.js'
-import AutoPause from './plugins/AutoPause.ts'
+import MediaPlayer from './mediaPlayer'
+import AutoPlay from './plugins/AutoPlay'
+import AutoPause from './plugins/AutoPause'
 
 const video = document.querySelector('video');
 const player = new MediaPlayer({ el: video, plugins:[
   new AutoPlay(), new AutoPause()
 ] });
 
-const buttonPlay = document.getElementById('play');
+const buttonPlay: HTMLElement = document.getElementById('play');
 buttonPlay.onclick = () => player.togglePlay();
 
-const buttonSound = document.getElementById('sound');
+const buttonSound: HTMLElement = document.getElementById('sound');
 buttonSound.onclick = () => player.toggleSound();
 
 if('serviceWorker' in navigator){

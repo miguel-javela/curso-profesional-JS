@@ -1,7 +1,7 @@
-import MediaPlayer from './mediaPlayer'
-import AutoPlay from './plugins/AutoPlay'
-import AutoPause from './plugins/AutoPause'
-import Ads from './plugins/Ads'
+import MediaPlayer from '@miguel-javela/mediaplayer'
+import AutoPlay from '@miguel-javela/mediaplayer/lib/plugins/AutoPlay'
+import AutoPause from '@miguel-javela/mediaplayer/lib/plugins/AutoPause'
+import Ads from '@miguel-javela/mediaplayer/lib/plugins/Ads'
 
 const video = document.querySelector('video');
 const player = new MediaPlayer({ el: video, plugins:[

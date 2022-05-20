@@ -1,0 +1,16 @@
+{
+  "name": "@miguel-javela/mediaplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/mediaPlayer.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "miguel javela",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
